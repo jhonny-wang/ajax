@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Document</title>
+    <script src="ajax.js"></script>
+</head>
+<body>
+    <input type="button" id="submit" value="submit">
+    <div id="txt"></div>
+<script>
+document.getElementById("submit").onclick = function(){
+	get({
+		url : 'example.php',
+		data : 'name=复读机&age=23',
+		callback : function(data){
+			document.getElementById("txt").innerHTML = data;
+		}
+	})
+}
+</script>
+</body>
+</html>
