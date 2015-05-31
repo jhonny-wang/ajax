@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="ajax.js"></script>
+</head>
+<body>
+<p>
+你的名字：<input type="text" id="yourname">
+</p>
+<p>
+网站：<input type="text" id="website">
+</p>
+<p>
+密码：<input type="password" id="password">
+</p>
+<p>
+<input type="button" value="submit" id="submit">
+</p>
+<div id="txt"></div>
+<script>
+//监听对象
+document.getElementById('submit').onclick = function(){
+	var yourname = document.getElementById("yourname").value;
+	var website = document.getElementById("website").value;
+  	var password = document.getElementById('password').value;
+  	var str = 'yourname=' + yourname + '&website=' + website + '&password=' + password;
+  	post({
+  		url : 'example1.php',
+  		data : str,
+  		callback : function(data){
+  			document.getElementById("txt").innerHTML = data;
+  		}
+  	})
+}
+//简单的post封装
+/*function post(url,callback,async){
+  var xhr = new XMLHttpRequest();
+  async = async ? async :true;
+  xhr.onreadystatechange = function(){
+    if(xhr.readyState == 4){
+      callback(xhr.responseText);
+    }
+  }
+  xhr.open("post",param(url)[0],async);
+  xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded")
+  xhr.send(param(url)[1]);
+}
+function param(url){
+  var arr = url.split("?");
+  return arr;
+}*/
+</script>
+</body>
+</html>
