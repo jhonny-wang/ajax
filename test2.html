@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Document</title>
+    <script src="ajax.js"></script>
+</head>
+<body>
+<input type="button" value="submit" id="submit">
+<div id="txt"></div>
+<script>
+// 监听对象
+document.getElementById('submit').onclick = function(){
+  getJsonp({
+  	url : 'example2.php',
+  	jsonpcallback : 'jsonp',
+  	success : function(data){
+  		document.getElementById("txt").innerHTML = "name :" + data.name + "; age :" + data.age;
+  	}
+  })
+}
+</script>
+</body>
+</html>
